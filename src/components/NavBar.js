@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 const NavBar = () => {
@@ -7,10 +8,10 @@ const NavBar = () => {
       <img src="/images/logo.png" alt="Surreal Estate Logo" className="logo" />
       <ul className="navbar-links">
         <li className="navbar-links-item">
-          <a href="# ">View Properties</a>
+          <Link to="/">View Properties</Link>
         </li>
         <li className="navbar-links-item">
-          <a href="# ">Add a Property</a>
+          <Link to="/add-property">Add a Property</Link>
         </li>
       </ul>
     </div>
