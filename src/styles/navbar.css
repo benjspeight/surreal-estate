@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid grey;
+}
+
+.logo {
+  max-width: 170px;
+}
+
+.navbar-links {
+  color: black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links-item {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+}

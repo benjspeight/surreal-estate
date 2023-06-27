@@ -1,7 +1,12 @@
-import "../styles/app.css";
+import React from "react";
+import NavBar from "./NavBar";
 
-function App() {
-  return <h2>Surreal Estate</h2>;
-}
+const App = () => {
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
+};
 
 export default App;
