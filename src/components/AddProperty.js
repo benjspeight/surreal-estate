@@ -1,26 +1,61 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../styles/add-property.css";
+import Alert from "./Alert";
+import "../styles/alert.css";
 
-const initialState = {
-  fields: {
-    title: "",
-    type: "Flat",
-    bedrooms: "",
-    bathrooms: "",
-    price: "",
-    city: "Manchester",
-    email: "",
+const AddProperties = () => {
+  const initialState = {
+    fields: {
+      title: "",
+      type: "Flat",
+      bedrooms: "",
+      bathrooms: "",
+      price: "",
+      city: "Manchester",
+      email: "",
+    },
+    alert: {
+      message: "",
+      isSuccess: false,
+    },
+  };
 
-    // Add other fields here
-  },
-};
-
-const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState(initialState.alert);
 
   const handleAddProperty = (event) => {
     event.preventDefault();
-    console.log(fields);
+    if (
+      fields.title.trim() === "" ||
+      fields.bedrooms.trim() === "" ||
+      fields.bathrooms.trim() === "" ||
+      fields.price.trim() === "" ||
+      fields.email.trim() === ""
+    ) {
+      setAlert({
+        message: "Please fill in all required fields.",
+        isSuccess: false,
+      });
+      return;
+    }
+
+    setAlert({ message: "", isSuccess: false });
+
+    axios
+      .post("http://localhost:3000/api/v1/PropertyListing", fields)
+      .then((response) =>
+        setAlert({
+          message: "Property Added",
+          isSuccess: true,
+        })
+      )
+      .catch((error) =>
+        setAlert({
+          message: "Server error. Please try again later.",
+          isSuccess: false,
+        })
+      );
   };
 
   const handleFieldChange = (event) => {
@@ -43,7 +78,6 @@ const AddProperty = () => {
             />
           </label>
         </div>
-
         <div>
           <label htmlFor="type">
             Type:
@@ -63,7 +97,6 @@ const AddProperty = () => {
             </select>
           </label>
         </div>
-
         <div>
           <label htmlFor="bedrooms">
             Bedrooms:
@@ -77,7 +110,6 @@ const AddProperty = () => {
             />
           </label>
         </div>
-
         <div>
           <label htmlFor="bathrooms">
             Bathrooms:
@@ -91,7 +123,6 @@ const AddProperty = () => {
             />
           </label>
         </div>
-
         <div>
           <label htmlFor="price">
             Price:
@@ -105,7 +136,6 @@ const AddProperty = () => {
             />
           </label>
         </div>
-
         <div>
           <label htmlFor="city">
             City:
@@ -122,7 +152,6 @@ const AddProperty = () => {
             </select>
           </label>
         </div>
-
         <div>
           <label htmlFor="email">
             Email:
@@ -136,13 +165,13 @@ const AddProperty = () => {
             />
           </label>
         </div>
-
         <div>
           <button type="submit">Add</button>
+          <Alert message={alert.message} success={alert.isSuccess} />
         </div>
       </form>
     </div>
   );
 };
 
-export default AddProperty;
+export default AddProperties;
