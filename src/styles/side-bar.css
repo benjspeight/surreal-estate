@@ -1,0 +1,57 @@
+.sidebar {
+  background-color: #fff;
+  margin-top: 5.25rem;
+  width: 15rem;
+  height: 100%;
+  position: fixed;
+}
+
+.sidebar-form {
+  margin: 2rem 0 0 2rem;
+  display: flex;
+}
+
+#query {
+  margin: 1rem 0 1rem 0;
+  padding: 0.4rem;
+}
+
+.sidebar-button {
+  height: 2rem;
+  margin: 2.2rem 1.5rem 0 0.2rem;
+  background-color: #83bcff;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.sidebar-title {
+  display: flex;
+}
+
+.sidebar-icon {
+  margin: 1rem 0.5rem 0 2rem;
+}
+
+.sidebar-text {
+  font-weight: 800;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-links-item {
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+}
+
+.sidebar-links-item:link {
+  color: #000000;
+}
+
+.sidebar-links-item:visited {
+  color: #000000;
+}

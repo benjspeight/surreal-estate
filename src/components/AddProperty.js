@@ -44,13 +44,13 @@ const AddProperties = () => {
 
     axios
       .post("http://localhost:3000/api/v1/PropertyListing", fields)
-      .then((response) =>
+      .then(() =>
         setAlert({
           message: "Property Added",
           isSuccess: true,
         })
       )
-      .catch((error) =>
+      .catch(() =>
         setAlert({
           message: "Server error. Please try again later.",
           isSuccess: false,
