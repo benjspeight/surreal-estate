@@ -1,57 +1,40 @@
 .sidebar {
-  background-color: #fff;
-  margin-top: 5.25rem;
-  width: 15rem;
-  height: 100%;
-  position: fixed;
-}
-
-.sidebar-form {
-  margin: 2rem 0 0 2rem;
+  width: 100%;
+  padding: 20px;
+  background-color: #f1f1f1;
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
 }
 
-#query {
-  margin: 1rem 0 1rem 0;
-  padding: 0.4rem;
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 20px;
 }
 
-.sidebar-button {
-  height: 2rem;
-  margin: 2.2rem 1.5rem 0 0.2rem;
-  background-color: #83bcff;
-  border-radius: 0.3rem;
-  border: none;
-}
-
-.sidebar-title {
-  display: flex;
-}
-
-.sidebar-icon {
-  margin: 1rem 0.5rem 0 2rem;
-}
-
-.sidebar-text {
-  font-weight: 800;
-}
-
-.sidebar-links {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+.sidebar ul {
+  list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
-.sidebar-links-item {
-  padding: 0.5rem 2rem;
+.sidebar ul li {
+  margin-right: 20px; /* Increase the margin-right value to create more spacing */
+}
+
+.sidebar .sidebar-link {
   text-decoration: none;
+  color: #333;
 }
 
-.sidebar-links-item:link {
-  color: #000000;
+.sidebar .sidebar-link:hover {
+  color: #555;
 }
 
-.sidebar-links-item:visited {
-  color: #000000;
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
 }

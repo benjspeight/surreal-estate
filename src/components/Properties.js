@@ -14,9 +14,12 @@ const Properties = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const query = params.get("query");
+    const sort = params.get("sort");
 
     axios
-      .get(`http://localhost:3000/api/v1/PropertyListing?query=${query}`)
+      .get(
+        `http://localhost:3000/api/v1/PropertyListing?query=${query}&sort=${sort}`
+      )
       .then((response) => {
         const { data } = response;
         setProperties(data);
@@ -30,7 +33,7 @@ const Properties = () => {
 
   return (
     <div className="properties">
-      <SideBar />
+      <SideBar className="sidebar" />
       <h3 className="properties__header">Properties Page</h3>
       {alert.message && <Alert message={alert.message} />}
       <div className="property-card-grid">
