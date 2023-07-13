@@ -1,26 +1,40 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import qs from "qs";
 import "../styles/side-bar.css";
 
 const SideBar = () => {
   const cities = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
-  const location = useLocation();
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const buildQueryString = (operation, valueObj) => {
-    const { search } = location;
-
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
 
     const newQueryParams = {
       ...currentQueryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQueryParams[operation] || "{}"),
+        ...valueObj,
+      }),
     };
 
     return qs.stringify(newQueryParams, {
       addQueryPrefix: true,
       encode: false,
     });
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const queryString = buildQueryString("query", {
+      title: { $regex: searchQuery },
+    });
+
+    const queryParams = queryString.replace(/%20/g, "+"); // Replace spaces with "+"
+    navigate(queryParams);
   };
 
   return (
@@ -57,6 +71,14 @@ const SideBar = () => {
           </Link>
         </li>
       </ul>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 };
